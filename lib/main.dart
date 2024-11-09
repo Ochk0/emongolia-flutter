@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:flip_card/flip_card.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
@@ -33,12 +33,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final blueColor = const Color(0xFF216dff);
+  final greyColor = const Color(0xFF3d5e89);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: const Color(0xFF216dff),
+        backgroundColor: blueColor,
         shape: const StadiumBorder(),
         child: const Icon(
           Icons.qr_code_scanner,
@@ -52,43 +55,63 @@ class _MyHomePageState extends State<MyHomePage> {
         notchMargin: 8.0,
         child: Container(
           decoration: const BoxDecoration(
-            // color: Colors.white,
             borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-            // border: Border(
-            //   top: BorderSide(width: 1.0, color: Color(0xFFdee9f3)),
-            // ),
           ),
           child: SizedBox(
             height: 60,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                    icon: const Icon(Icons.home),
-                    onPressed: () {},
-                    iconSize: 36,
-                    color: const Color(0xFF3d5e89),
+                  Column(
+                    children: [
+                      Image.asset('assets/icons/home.png', height: 25, width: 25, color: greyColor),
+                      const Gap(5),
+                      Text(
+                        'Нүүр',
+                        style: TextStyle(fontSize: 10, color: greyColor),
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.apps_sharp),
-                    onPressed: () {},
-                    color: const Color(0xFF3d5e89),
-                    iconSize: 36,
+                  Column(
+                    children: [
+                      Image.asset('assets/icons/grid.png', height: 23, width: 23, color: greyColor),
+                      const Gap(5),
+                      Text(
+                        'Үйлчилгээ',
+                        style: TextStyle(fontSize: 10, color: greyColor),
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 40),
-                  IconButton(
-                    icon: const Icon(Icons.mark_chat_unread_outlined),
-                    onPressed: () {},
-                    iconSize: 36,
-                    color: const Color(0xFF3d5e89),
+                  const SizedBox(),
+                  Column(
+                    children: [
+                      Image.asset('assets/icons/message.png', height: 23, width: 23, color: greyColor),
+                      const Gap(5),
+                      Text(
+                        'Чат',
+                        style: TextStyle(fontSize: 10, color: greyColor),
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.person_outline_sharp),
-                    onPressed: () {},
-                    iconSize: 36,
-                    color: const Color(0xFF216dff),
+                  Column(
+                    children: [
+                      Image.asset(
+                        'assets/icons/user.png',
+                        height: 23,
+                        width: 23,
+                        color: blueColor,
+                      ),
+                      const Gap(5),
+                      Text(
+                        'Профайл',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: blueColor,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -99,7 +122,6 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Row(
           children: [
-            // const Image(image: AssetImage('assets/images/1.svg')),
             SvgPicture.asset(
               'assets/images/1.svg',
               semanticsLabel: 'My SVG Image',
@@ -107,17 +129,20 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 10,
             ),
             const Spacer(),
-            IconButton(
-              icon: const Icon(Icons.notifications),
-              onPressed: () {},
-              // add this color 216dff
-              color: const Color(0xFF216dff),
+            Image.asset(
+              'assets/icons/bell.png',
+              width: 25,
+              height: 25,
+              color: blueColor,
             ),
-            IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {},
-              color: const Color(0xFF216dff),
+            const Gap(40),
+            Image.asset(
+              'assets/icons/menu.png',
+              width: 25,
+              height: 25,
+              color: blueColor,
             ),
+            const Gap(20),
           ],
         ),
       ),
@@ -128,14 +153,11 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const Text(
+              Text(
                 'Миний бичиг баримтууд',
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF3d5e89),
-                ),
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: greyColor),
               ),
+              const Gap(10),
               GestureDetector(
                 onTap: () {
                   showModalBottomSheet<void>(
@@ -158,18 +180,14 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: 3,
                               width: 50,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF3d5e89),
+                                color: greyColor,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),
                             const Gap(10),
-                            const Text(
+                            Text(
                               'Иргэний үнэмлэх',
-                              style: TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF3d5e89),
-                              ),
+                              style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: greyColor),
                             ),
                             const Gap(10),
                             const FlipCard(
@@ -190,11 +208,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     foregroundColor: Colors.white,
-                                    backgroundColor: const Color(0xFF216dff),
+                                    backgroundColor: blueColor,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20),
                                     ),
-                                    shadowColor: const Color(0xFF216dff),
+                                    shadowColor: blueColor,
                                   ),
                                   onPressed: () => Navigator.pop(context),
                                   child: const Text('Дахин захиалах'),
@@ -204,7 +222,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   style: ElevatedButton.styleFrom(
                                     shadowColor: Colors.transparent,
                                     // border color
-                                    side: const BorderSide(color: Color(0xFF216dff)),
+                                    side: BorderSide(color: blueColor, width: 2),
                                     foregroundColor: Colors.white,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20),
@@ -240,28 +258,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               // centered 3 dots and one with different color
-              const Center(
-                child: Text(
-                  '.',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF3d5e89),
-                  ),
+              const Gap(20),
+              Center(
+                child: Container(
+                  width: 8,
+                  height: 8,
+                  decoration: BoxDecoration(shape: BoxShape.circle, color: greyColor),
                 ),
               ),
               const Gap(50),
-              const Text(
+              Text(
                 'Төрд байгаа миний мэдээлэл',
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF3d5e89),
-                ),
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: greyColor),
               ),
+              const Gap(10),
               Container(
                 height: 40,
-                // full width
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -279,13 +291,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 40,
                       width: 10,
                     ),
-                    const Text(
+                    Text(
                       '2024 оны УИХ-ын сонгууль',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF3d5e89),
-                      ),
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: greyColor),
                     ),
                   ]),
                 ),
@@ -311,13 +319,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 40,
                       width: 10,
                     ),
-                    const Text(
+                    Text(
                       'Нийгмийн даатгалын мэдээлэл',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF3d5e89),
-                      ),
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: greyColor),
                     ),
                   ]),
                 ),
@@ -344,13 +348,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 40,
                       width: 10,
                     ),
-                    const Text(
+                    Text(
                       'Эрүүл мэндийн даатгал төлөлтийн мэдээлэл',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF3d5e89),
-                      ),
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: greyColor),
                     ),
                   ]),
                 ),
@@ -377,13 +377,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: 5,
                     ),
                     const Gap(8),
-                    const Text(
+                    Text(
                       'Иргэний бүртгэлийн мэдээлэл',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF3d5e89),
-                      ),
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: greyColor),
                     ),
                   ]),
                 ),
@@ -409,13 +405,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 40,
                       width: 10,
                     ),
-                    const Text(
+                    Text(
                       'Хаягийн өөрчлөлтийн мэдээлэл',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF3d5e89),
-                      ),
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: greyColor),
                     ),
                   ]),
                 ),
@@ -441,13 +433,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 40,
                       width: 10,
                     ),
-                    const Text(
+                    Text(
                       'Гэрлэлтийн мэдээлэл',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF3d5e89),
-                      ),
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: greyColor),
                     ),
                   ]),
                 ),
@@ -473,13 +461,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 40,
                       width: 10,
                     ),
-                    const Text(
+                    Text(
                       'Гадаад пасспортын мэдээлэл',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF3d5e89),
-                      ),
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: greyColor),
                     ),
                   ]),
                 ),
@@ -505,13 +489,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 40,
                       width: 10,
                     ),
-                    const Text(
+                    Text(
                       'Өрхийн гишүүдийн мэдээлэл',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF3d5e89),
-                      ),
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: greyColor),
                     ),
                   ]),
                 ),
